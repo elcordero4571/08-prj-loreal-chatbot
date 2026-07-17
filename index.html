@@ -2,16 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Makes the layout work correctly on phones and tablets. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+
+    <title>L'Oréal Beauty Assistant</title>
+
+    <!-- Google Material Icons for the send button. -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+
+    <!-- Montserrat is a clean font that works well with the design. -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Connects this HTML page to your CSS file. -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -19,39 +28,107 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <!--
+          Make sure the image filename matches the logo in your project.
+
+          Example folder structure:
+          img/loreal-logo.png
+        -->
+        <img
+          src="img/loreal-logo.png"
+          alt="L'Oréal logo"
+          class="site-logo"
+        />
+
+        <div class="header-text">
+          <p class="header-label">Personal Beauty Assistant</p>
+          <h1 class="site-title">L'Oréal Product Advisor</h1>
+
+          <p class="site-description">
+            Discover makeup, skincare, haircare, fragrances, and personalized
+            beauty routines.
+          </p>
+        </div>
       </header>
 
-      <!------- Chat Area ------->
+      <!------- Main Chat Area ------->
       <main>
-        <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+        <section class="chatbox" aria-label="L'Oréal beauty chatbot">
+          <!--
+            Extra-credit feature:
+            This section displays only the user's latest question.
+
+            It begins hidden and JavaScript will show it after the
+            user sends a message.
+          -->
+          <div id="latestQuestionBox" class="latest-question-box" hidden>
+            <p class="latest-question-label">Your latest question</p>
+            <p id="latestQuestionText"></p>
           </div>
 
+          <!--
+            JavaScript will add user and assistant message bubbles here.
+          -->
+          <div
+            id="chatWindow"
+            class="chat-window"
+            aria-live="polite"
+            aria-label="Chat conversation"
+          >
+            <!-- Messages will be added here using JavaScript. -->
+          </div>
+
+          <!------- User Input Form ------->
           <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Message</label>
+            <!--
+              This label helps screen readers understand the input.
+              CSS will visually hide it.
+            -->
+            <label for="userInput" class="visually-hidden">
+              Ask the L'Oréal beauty assistant a question
+            </label>
+
             <input
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask about a product or beauty routine..."
               autocomplete="off"
               required
             />
-            <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
+
+            <button
+              type="submit"
+              id="sendBtn"
+              aria-label="Send message"
+            >
+              <span class="material-icons" aria-hidden="true">send</span>
             </button>
           </form>
+
+          <!--
+            JavaScript can display loading messages or errors here.
+          -->
+          <p
+            id="statusMessage"
+            class="status-message"
+            role="status"
+            aria-live="polite"
+          ></p>
         </section>
       </main>
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
+        <p>&copy; 2026 L'Oréal Beauty Assistant Project</p>
+
+        <p class="disclaimer">
+          AI recommendations may not be perfect. Check product labels and seek
+          professional help for serious skin reactions or medical concerns.
+        </p>
+
+        <nav aria-label="Footer links">
+          <!-- Replace these placeholder links if your assignment provides URLs. -->
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Use</a>
           <a href="#">Contact</a>
@@ -59,6 +136,9 @@
       </footer>
     </div>
 
+    <!--
+      JavaScript is loaded at the end so the HTML elements are created first.
+    -->
     <script src="script.js"></script>
   </body>
 </html>
