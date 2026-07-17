@@ -30,7 +30,7 @@ const statusMessage = document.getElementById("statusMessage");
   Never put an OpenAI API key inside this file.
 */
 const WORKER_URL =
-  "https://lingering-morning-801c.elcordero4571.workers.dev/";
+  "https://loreal-chat-bot.elcordero4571.workers.dev";
 
 
 /* -----------------------------------------
